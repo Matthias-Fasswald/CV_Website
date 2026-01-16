@@ -77,6 +77,10 @@ export default function Hero() {
               <MagneticButton href="#contact">
                 Contact
               </MagneticButton>
+              
+              <MagneticButton href="Abschlusszeugnis-Matthias-Fasswald_signed.pdf">
+                Letter of Reference
+              </MagneticButton>
             </div>
 
             {/* SKILL TILES */}
