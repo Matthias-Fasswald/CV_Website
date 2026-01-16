@@ -1,36 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Cursor() {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [hover, setHover] = useState(false);
-
   useEffect(() => {
+    const cursor = document.createElement("div");
+    cursor.id = "custom-cursor";
+    document.body.appendChild(cursor);
+
     const move = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     };
 
     window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
-
-  useEffect(() => {
-    const enter = () => setHover(true);
-    const leave = () => setHover(false);
-
-    document.querySelectorAll("a, button").forEach(el => {
-      el.addEventListener("mouseenter", enter);
-      el.addEventListener("mouseleave", leave);
-    });
 
     return () => {
-      document.querySelectorAll("a, button").forEach(el => {
-        el.removeEventListener("mouseenter", enter);
-        el.removeEventListener("mouseleave", leave);
-      });
+      window.removeEventListener("mousemove", move);
+      cursor.remove();
     };
   }, []);
 
- 
+  
+  return <></>;
 }
