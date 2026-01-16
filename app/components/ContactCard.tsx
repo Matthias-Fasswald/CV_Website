@@ -13,7 +13,7 @@ export default function ContactCard({
   href: string;
   icon: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const [active, setActive] = useState(false);
 
   const onMouseMove = (e: React.MouseEvent) => {
